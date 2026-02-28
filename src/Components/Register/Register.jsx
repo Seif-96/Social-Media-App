@@ -16,7 +16,6 @@ const schema = zod
       .nonempty('Full name is required.')
       .min(3, 'min length is 3 chars')
       .max(10, 'max length is 10 chars'),
-    username: zod.string().optional(),
     email: zod
       .email('Invalid email address.')
       .nonempty('Email is required.')
@@ -40,8 +39,26 @@ const schema = zod
         /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
         'Password must include uppercase, lowercase, number, and special character.',
       )
-      .nonempty('Password is required.'),
-    rePassword: zod.string().nonempty('Please confirm your password.'),
+      .nonempty('Password is required.')
+      .min(
+        8,
+        'Password must be at least 8 characters long Password must include uppercase, lowercase, number, and special character.',
+      )
+      .max(
+        20,
+        'Password must be at most 20 characters long Password must include uppercase, lowercase, number, and special character.',
+      ),
+    rePassword: zod
+      .string()
+      .nonempty('Please confirm your password.')
+      .min(
+        8,
+        'Password must be at least 8 characters long Password must include uppercase, lowercase, number, and special character.',
+      )
+      .max(
+        20,
+        'Password must be at most 20 characters long Password must include uppercase, lowercase, number, and special character.',
+      ),
   })
   .refine(
     (data) => {

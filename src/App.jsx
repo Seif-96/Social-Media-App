@@ -4,8 +4,8 @@ import Layout from './Components/Layout/Layout';
 import Auth from './Components/Auth/Auth';
 import Home from './Components/Home/Home';
 import Notfound from './Components/Notfound/Notfound';
-import '@fontsource/cairo'; // Defaults to weight 400
-// import '@fontsource/cairo/400.css'; // Specify weight
+import '@fontsource/cairo';
+import { HeroUIProvider } from '@heroui/react';
 
 const router = createBrowserRouter([
   { index: true, element: <Auth /> },
@@ -23,7 +23,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router}></RouterProvider>
+      <HeroUIProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </HeroUIProvider>
     </>
   );
 }
