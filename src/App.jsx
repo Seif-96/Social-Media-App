@@ -6,6 +6,8 @@ import Home from './Components/Home/Home';
 import Notfound from './Components/Notfound/Notfound';
 import '@fontsource/cairo';
 import { HeroUIProvider } from '@heroui/react';
+import Profile from './Components/Profile/Profile';
+import Notifications from './Components/Notifications/Notifications';
 
 const router = createBrowserRouter([
   { index: true, element: <Auth /> },
@@ -16,6 +18,8 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: 'home', element: <Home /> },
+      { path: 'profile', element: <Profile /> },
+      { path: 'notifications', element: <Notifications /> },
       { path: '*', element: <Notfound /> },
     ],
   },
